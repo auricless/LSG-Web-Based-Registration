@@ -1,0 +1,90 @@
+.landing-background{
+	height: 100vh;
+	background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0 ,0, 0.5), rgba(0, 0, 0, 0.1)) , url("../img/youth.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+.content{
+	color: rgb(240, 240, 255);
+	text-align: center;
+	padding-top: 15%;
+}
+
+#head{
+	font-family: Raleway;
+	font-size: 50px;	
+}
+
+hr{
+  border: 0; 
+  width: 70%;
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
+
+#register{
+	background-image: url("../img/background.jpg");
+}
+
+.form-container{
+	display: block;
+	text-align: center;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+form{
+	display: inline-block;
+	margin: auto auto;
+	text-align: left;
+}
+
+.footer{
+	background-color: rgb(25, 25, 25);
+	color: rgb(240, 240, 255);
+}
+
+.footer h4{
+	margin-left: 50px;
+}
+
+.footer p{
+	margin-left: 100px;
+}
+
+a{
+	color: rgb(240, 240, 255);
+}
+
+a:hover, a:link{
+	text-decoration: none;
+	color: rgb(150, 150, 150);
+}
+
+.to-top{
+	background-color: rgb(20, 20, 20);
+	color: rgb(240, 240, 255);
+	text-align: center;
+}
+
+.navbar{
+	background-color: rgba(0, 0, 0, 0.0);
+	border: none;
+	color: rgb(240, 240, 255);
+}
+
+.navbar-brand{
+	font-weight: 700;
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+	color: rgb(240, 240, 255);
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover{
+	color: rgb(240, 240, 255);
+}
