@@ -69,3 +69,7 @@ a:hover, a:link{
 .navbar-brand{
 	font-weight: 700;
 }
+
+.input-warning{
+	color: rgb(255, 0, 0);
+}

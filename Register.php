@@ -6,18 +6,19 @@
 
 <!-- 
 TO-DO:
--refactor codes
+-refactor codes *DONE*
 -convert database to Excel
+-clientside form validation
 
  -->
-
 <?php addGuest(); ?>
 <?php deleteGuest(); ?>
+<div class="validation-message"></div>
 	
 		<div class="container">
 			<div class="form-container">
 				<h1>Register</h1>
-				<form action="Register.php" method="POST">
+				<form action="Register.php" method="POST" name="guestForm" onsubmit="return validate()">
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="form-group">
@@ -32,11 +33,11 @@ TO-DO:
 							<div class="form-group">
 								<label>Gender:
 									<label class="radio-inline">
-										<input type="radio" name="gender" value="Male">
+										<input type="radio" name="gender" value="Male" required>
 										Male
 									</label>
 									<label class="radio-inline">
-										<input type="radio" name="gender" value="Female">
+										<input type="radio" name="gender" value="Female" required>
 										Female
 									</label>
 								</label>
@@ -111,6 +112,5 @@ TO-DO:
 
 		</div>
 </div>
-
-
+<?php echo time(); ?>
 <?php include "includes/footer.php"; ?>
