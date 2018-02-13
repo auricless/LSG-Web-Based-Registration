@@ -2,19 +2,7 @@
 
 	function addGuest(){
 		global $con;
-		// if (isset($_POST['submit'])) {
-		// 	if((!isset($_POST['fname']) || trim($_POST['fname']) == "") || !isset($_POST['gender']) || (!isset($_POST['fname']) || trim($_POST['fname']) == "") || empty($_POST['age']) || (!isset($_POST['contact']) || trim($_POST['contact']) == "") || (!isset($_POST['address']) || trim($_POST['address']) == "") || (!isset($_POST['invited']) || trim($_POST['invited']) == "") ){
-		// 		echo
-		// 		"<div class='alert alert-warning'>
-		// 			<strong>Warning!</strong> Required fields were not filled up.
-		// 		</div>";
-		// 	}else if(preg_match('/[^0-9]+$/', $_POST['age']) == 1) {
-		// 		echo
-		// 		"<div class='alert alert-warning'>
-		// 			<strong>Warning!</strong> Age should be numeric.
-		// 		</div>";
-		// 	}
-		// 	else{
+
 		if(isset($_POST['submit'])){
 			$time = time();
 			$fname = $_POST['fname'];
@@ -111,7 +99,6 @@
 				<td> {$address} </td>
 				<td> {$contact} </td>
 				<td> {$invited} </td>
-				<!-- Register.php?g_id=<?php echo $ID> -->
 				<td class='danger'><a href='includes/deleteModal.php?g_id={$ID}' data-toggle='modal' data-target='#myModal'>Delete</a></td>
 			</tr>";
 		}
