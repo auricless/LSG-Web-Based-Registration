@@ -12,7 +12,7 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li>
-                    <a href="#">Home Site</a>
+                    <a href="../index.php">Home Site</a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> LSG Administrator <b class="caret"></b></a>
