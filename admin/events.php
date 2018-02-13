@@ -1,4 +1,20 @@
     <?php include "includes/admin_header.php"; ?>
+    <?php 
+
+    	if(isset($_GET['delete'])){
+    		$id = $_GET['delete'];
+
+    		$query = "DELETE FROM events ";
+    		$query .= "WHERE event_id = $id";
+
+    		$result = mysqli_query($con, $query);
+    		if(!$result){
+    			die("Query faield " . mysqli_error($con));
+    		}
+    	}
+
+     ?>
+
 
     <div id="wrapper">
 
@@ -15,27 +31,33 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Dashboard
-                            <small>Subheading</small>
+                            LSG Events
+                            <small>View All</small>
                         </h1>
                     </div>
                 </div>
                 <!-- /.row -->
-                <table>
-                	<thead>
-                		<tr>
-                			<th>ID</th>
-                			<th>LSG Event Title</th>
-                			<th>LSG Poster</th>
-                			<th>Date</th>
-                		</tr>
-                	</thead>
-                	<tbody>
-                		<?php 
-                			
-                		 ?>
-                	</tbody>
-                </table>
+                 <?php 
+
+                	if(isset($_GET['source'])){
+                		$source = $_GET['source'];
+                	}else{
+                		$source = "";
+                	}
+            		switch ($source) {
+            			case 'add_event':
+            				include "includes/add_event.php";
+            				break;
+            			case 'edit_event':
+            				include "includes/edit_event.php";
+            				break;
+            			
+            			default:
+            				include "includes/view_all_events.php";
+            				break;
+            		}
+
+                 ?>
 
             </div>
             <!-- /.container-fluid -->

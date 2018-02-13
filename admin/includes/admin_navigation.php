@@ -46,7 +46,7 @@
                                 <a href="./events.php">View All LSG Events</a>
                             </li>
                             <li>
-                                <a href="#">Add LSG Event</a>
+                                <a href="./events.php?source=add_event">Add LSG Event</a>
                             </li>
                         </ul>
                     </li>
