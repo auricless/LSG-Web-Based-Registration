@@ -7,7 +7,7 @@
 		var invited = document.forms['guestForm']['invited'].value;
 
 		if(fname.trim() == "" || lname.trim() == "" || age.trim() == "" || addr.trim() == "" || contact.trim() == "" || invited.trim() == ""){
-			$(".validation-message").html("<div class='alert alert-warning'><strong>Warning!</strong> Required fields were not filled up UPDATE.</div>");
+			$(".validation-message").html("<div class='alert alert-warning'><strong>Warning!</strong> Required fields were not filled up.</div>");
 			return false;
 		}
 		return true;
