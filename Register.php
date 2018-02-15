@@ -8,11 +8,38 @@
 TO-DO:
 -refactor codes *DONE*
 -convert database to Excel
--clientside form validation
+-clientside form validation *DONE*
 
  -->
-<?php addGuest(); ?>
-<?php deleteGuest(); ?>
+ <?php 
+
+$query = "SELECT * FROM events WHERE event_launch = 1";
+$result = mysqli_query($con, $query);
+if(!$result){
+	die("Query failed " . mysqli_error($con));
+}
+
+if(mysqli_num_rows($result) != 0){
+	$showGuest = true;
+}else{
+	$showGuest = false;
+}
+
+while($row = mysqli_fetch_assoc($result)){
+	$event_id = $row['event_id'];
+	$lsg_event = $row['event_name'];
+}
+  ?>
+
+  <?php 
+
+  if($showGuest){
+  		addGuest($event_id);
+		deleteGuest();
+  }
+
+   ?>
+
 <div class="validation-message"></div>
 	
 		<div class="container">
@@ -71,7 +98,9 @@ TO-DO:
 			</div>
 		</div>
 
-		<div class="container">
+		<?php 
+		if($showGuest){ ?>
+			<div class="container">
 			<h3>Guest List</h3>
 			<table class="table table-bordered">
 				<thead>
@@ -87,7 +116,7 @@ TO-DO:
 					</tr>
 				</thead>
 				<tbody>
-					<?php $count = showGuests(); ?>					
+					<?php $count = showGuests($event_id); ?>					
 				</tbody>
 			</table>
 			<p>Total guest count: <?php echo $count; ?></p>
@@ -111,6 +140,11 @@ TO-DO:
 			<!-- Modal END-->
 
 		</div>
+		<?php }
+
+		 ?>
+
+
 </div>
 <?php echo time(); ?>
 <?php include "includes/footer.php"; ?>
