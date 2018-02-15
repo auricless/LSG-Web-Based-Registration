@@ -1,7 +1,9 @@
 <?php
 
-	function addGuest(){
+	function addGuest($event_id){
 		global $con;
+
+		$lsg_id = searchEventById($event_id);
 
 		if(isset($_POST['submit'])){
 			$time = time();
@@ -13,8 +15,8 @@
 			$contact = $_POST['contact'];
 			$invited = $_POST['invited'];
 
-			$query = "INSERT INTO guests(attended_time, first_name, last_name, gender, age, address, contact, invited_by) ";
-			$query .= "VALUES(now(), '{$fname}', '{$lname}', '{$gender}',$age , '{$address}', '{$contact}', '{$invited}')";
+			$query = "INSERT INTO guests(lsg_id, attended_time, first_name, last_name, gender, age, address, contact, invited_by) ";
+			$query .= "VALUES($lsg_id, now(), '{$fname}', '{$lname}', '{$gender}',$age , '{$address}', '{$contact}', '{$invited}')";
 
 			$result = mysqli_query($con, $query);
 			if (!$result) {
@@ -29,28 +31,11 @@
 	}
 
 	function deleteGuest(){
-		global $con;
-		if (isset($_POST['admin'])) {
-			$pass = $_POST['pass'];
+			global $con;
 
-			$query = "SELECT * FROM admins WHERE password = '{$pass}'";
-			$result = mysqli_query($con, $query);
-			if (!$result) {
-				die("QUERY failed" . mysqli_error($con));
-			}
+			$isCorrect = isAdminPassCorrect();
 
-			if(mysqli_num_rows($result) == 0){
-				echo
-				"<div class='alert alert-danger'>
-					<strong>Success!</strong> Wrong Admin password entered.
-				</div>";			
-			}else{
-				while ($row = mysqli_fetch_assoc($result)) {
-					$dbPass = $row['password'];
-				}
-			}
-
-			if($pass === $dbPass){
+			if($isCorrect){
 				if (isset($_GET['g_id'])) {
 					$id = $_GET['g_id'];
 
@@ -67,14 +52,21 @@
 						</div>";
 					}
 				}
+			}else{
+				echo
+				"<div class='alert alert-warning'>
+					<strong>Error!</strong> Invalid admin password entered.
+				</div>";
 			}
-		}
 	}
 
-	function showGuests(){
+	function showGuests($event_id){
 			global $con;
+
+			$lsg_id = searchEventById($event_id);
+			
 			$count = 0;
-			$query = "SELECT * FROM guests";
+			$query = "SELECT * FROM guests WHERE lsg_id ='{$lsg_id}'";
 			$result = mysqli_query($con, $query);
 			$count = mysqli_num_rows($result);
 			if (!$result) {
@@ -104,6 +96,48 @@
 		}
 
 		return $count;
+	}
+
+	function searchEventById($event_id){
+			global $con;
+
+			$query = "SELECT * FROM events WHERE event_id = '{$event_id}'";
+			$result = mysqli_query($con, $query);
+			if(!$result){
+				die("Query faield " . mysqli_error($con));
+			}
+			while ($row = mysqli_fetch_assoc($result)) {
+				$lsg_id = $row['event_id'];
+			}
+			return $lsg_id;
+	}
+
+	function isAdminPassCorrect(){
+        global $con;
+
+        if (isset($_POST['admin'])) {
+            $pass = $_POST['pass'];
+
+
+            $query = "SELECT * FROM admins WHERE password = '{$pass}'";
+
+            $result = mysqli_query($con, $query);
+            if (!$result) {
+                die("QUERY failed" . mysqli_error($con));
+            }
+
+            if(mysqli_num_rows($result) != 0){
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $dbPass = $row['password'];
+                }
+
+                if($dbPass === $pass){
+                    return true;
+                }
+            }
+
+            return false;
+        }
 	}
  	
 ?>

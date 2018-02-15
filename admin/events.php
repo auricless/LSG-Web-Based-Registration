@@ -1,4 +1,5 @@
     <?php include "includes/admin_header.php"; ?>
+   
     <?php 
 
     	if(isset($_GET['delete'])){
@@ -12,6 +13,17 @@
     			die("Query faield " . mysqli_error($con));
     		}
     	}
+
+    	/*
+			
+		TODOs:
+		1. change frontend - 4
+		2. dynamically change background depends on launched lsg event - 2
+		3. dynamically register guest depends on lsg event - 1
+		4. add guest or team field in guests database and front's registration - 3
+		5. add chart widget with sort and filter feat - 5
+
+    	*/
 
      ?>
 
@@ -62,7 +74,19 @@
             </div>
             <!-- /.container-fluid -->
 
+			<!-- Modal -->
+			<div id="myModal" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+			    <!-- Modal content-->
+			    <div class="modal-content">
+
+			    </div>
+			  </div>
+			</div>
+			<!-- Modal END-->            
+
         </div>
         <!-- /#page-wrapper -->
+
 
    <?php include "includes/admin_footer.php"; ?>

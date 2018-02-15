@@ -26,6 +26,61 @@
 
  ?>
 
+ <?php 
+
+ if(isset($_GET['de_id'])){
+    $event_to_delete = $_GET['de_id'];
+
+    $isCorrect = isAdminPassCorrect();
+
+    if($isCorrect){
+        $query = "DELETE FROM events WHERE event_id = $event_to_delete";
+        $result = mysqli_query($con, $query);
+        if(!$result){
+            die("Query failed " . mysqli_error($con));
+        }else{
+            echo 
+            "<div class='alert alert-success'>
+                <strong>Success!</strong> Record succesfully deleted.
+            </div>";
+        }
+    }else{
+        echo
+            "<div class='alert alert-warning'>
+                <strong>Error!</strong> Invalid admin password entered.
+            </div>";
+    }
+ }
+
+    function isAdminPassCorrect(){
+        global $con;
+
+        if (isset($_POST['admin'])) {
+            $pass = $_POST['pass'];
+
+
+            $query = "SELECT * FROM admins WHERE password = '{$pass}'";
+
+            $result = mysqli_query($con, $query);
+            if (!$result) {
+                die("QUERY failed" . mysqli_error($con));
+            }
+
+            if(mysqli_num_rows($result) != 0){
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $dbPass = $row['password'];
+                }
+
+                if($dbPass === $pass){
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
+  ?>
+
 <table class = "table table-bordered table-hover">
     <thead>
         <tr>
@@ -33,6 +88,7 @@
             <th>LSG Event Title</th>
             <th>LSG Poster</th>
             <th>Date</th>
+            <th>Guests</th>
         </tr>
     </thead>
     <tbody>
@@ -61,8 +117,10 @@
                         <td>{$title}</td>
                         <td>{$image}</td>
                         <td>{$date}</td>
-                        <td><a href='events.php?delete={$id}'>Delete</a></td>
+                        <td><a href='events.php?source=view_guests&edit={$id}'>View</a></td>
+                        <td><a href='includes/deleteEventModal.php?de_id={$id}' data-toggle='modal' data-target='#myModal'>Delete</a></td>
                         <td><a href='events.php?source=edit_event&edit={$id}'>Edit</a></td>";
+
 
                         if($isLaunch){
                              echo
