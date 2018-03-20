@@ -10,6 +10,7 @@
 				<li><a href="Index.php"><span><i class="fa fa-home" aria-hidden="true"></i></span> Home</a></li>
 				<li><a href="Register.php"><span><i class="fa fa-user" aria-hidden="true"></i></span> Register</a></li>
 				<li><a href="About.php"><span><i class="fa fa-info" aria-hidden="true"></i></span> About Us</a></li>
+				<li><a href="feedback.php"><span><i class="fa fa-info" aria-hidden="true"></i></span> Feedback</a></li>
 			</ul>
 		</div>	
 	</nav>

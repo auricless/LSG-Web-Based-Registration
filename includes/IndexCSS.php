@@ -2,7 +2,7 @@
 	
 	.landing-background{
 	height: 100vh;
-	background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0 ,0, 0.5), rgba(0, 0, 0, 0.1)) , url("assets/img/youth.jpg");
+	background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0 ,0, 0.5), rgba(0, 0, 0, 0.1)) , url("admin/images/<?php echo $lsg_image ?>");
 	background-position: center;
 	background-size: cover;
 	}

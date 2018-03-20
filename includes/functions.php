@@ -31,16 +31,15 @@
 	}
 
 	function deleteGuest(){
-			global $con;
+			if (isset($_GET['g_id'])) {
+				$id = $_GET['g_id'];
+				
+				global $con;
 
-			$isCorrect = isAdminPassCorrect();
+				$isCorrect = isAdminPassCorrect();
 
-			if($isCorrect){
-				if (isset($_GET['g_id'])) {
-					$id = $_GET['g_id'];
-
+				if($isCorrect){
 					$query = "DELETE FROM guests WHERE guest_id = $id";
-
 					$result = mysqli_query($con, $query);
 
 					if(!$result){
@@ -51,13 +50,13 @@
 							<strong>Success!</strong> Record succesfully deleted.
 						</div>";
 					}
-				}
-			}else{
-				echo
-				"<div class='alert alert-warning'>
-					<strong>Error!</strong> Invalid admin password entered.
-				</div>";
+				}else{
+					echo
+					"<div class='alert alert-warning'>
+						<strong>Error!</strong> Invalid admin password entered.
+					</div>";
 			}
+		}
 	}
 
 	function showGuests($event_id){

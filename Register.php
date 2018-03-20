@@ -28,6 +28,7 @@ if(mysqli_num_rows($result) != 0){
 while($row = mysqli_fetch_assoc($result)){
 	$event_id = $row['event_id'];
 	$lsg_event = $row['event_name'];
+	$lsg_image = $row['event_image'];
 }
   ?>
 
@@ -143,8 +144,7 @@ while($row = mysqli_fetch_assoc($result)){
 		<?php }
 
 		 ?>
-
-
+		 
 </div>
 <?php echo time(); ?>
 <?php include "includes/footer.php"; ?>

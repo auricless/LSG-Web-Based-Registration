@@ -68,7 +68,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-file"></i> Profile</a>
+                        <a href="feedbacks.php"><i class="fa fa-fw fa-file"></i> Feedbacks</a>
                     </li>
                 </ul>
             </div>
