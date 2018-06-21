@@ -8,7 +8,7 @@
  		$dt =  strtotime($_POST['post_date']);
  		$date = date('Y-m-d', $dt);
 
- 		move_uploaded_file($image_temp, "images/$image");
+ 		echo(move_uploaded_file($image_temp, "images/$image"));
 
  		$query = "INSERT INTO events(event_name, event_image, event_date) ";
  		$query .= "VALUES('{$name}', '{$image}', '{$date}')";

@@ -90,6 +90,12 @@ while($row = mysqli_fetch_assoc($result)){
 							</div>
 
 							<div class="form-group">
+								<label>Facebook:
+									<input type="form-control" name="facebook" placeholder="Aron Ciruela">
+								</label>
+							</div>
+
+							<div class="form-group">
 								<button class="btn btn-primary btn-md" name="submit">Submit</button>
 								<a class="btn btn-danger btn-md cancel-btn" href="Index.php">Cancel</a>
 							</div>
@@ -113,7 +119,8 @@ while($row = mysqli_fetch_assoc($result)){
 						<th>Age</th>
 						<th>Address</th>
 						<th>Contact #</th>
-						<th>Invited by:</th>
+						<th>Invited by</th>
+						<th>Facebook</th>
 					</tr>
 				</thead>
 				<tbody>

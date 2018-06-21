@@ -14,9 +14,10 @@
 			$address = $_POST['address'];
 			$contact = $_POST['contact'];
 			$invited = $_POST['invited'];
+			$facebook = $_POST['facebook'];
 
-			$query = "INSERT INTO guests(lsg_id, attended_time, first_name, last_name, gender, age, address, contact, invited_by) ";
-			$query .= "VALUES($lsg_id, now(), '{$fname}', '{$lname}', '{$gender}',$age , '{$address}', '{$contact}', '{$invited}')";
+			$query = "INSERT INTO guests(lsg_id, attended_time, first_name, last_name, gender, age, address, contact, invited_by, facebook) ";
+			$query .= "VALUES($lsg_id, now(), '{$fname}', '{$lname}', '{$gender}',$age , '{$address}', '{$contact}', '{$invited}', '{$facebook}')";
 
 			$result = mysqli_query($con, $query);
 			if (!$result) {
@@ -80,6 +81,7 @@
 				$address = $row['address'];
 				$contact = $row['contact'];
 				$invited = $row['invited_by'];
+				$facebook = $row['facebook'];
 			 echo
 			"<tr>
 				<td> {$ID} </td>
@@ -90,6 +92,7 @@
 				<td> {$address} </td>
 				<td> {$contact} </td>
 				<td> {$invited} </td>
+				<td> {$facebook} </td>
 				<td class='danger'><a href='includes/deleteModal.php?g_id={$ID}' data-toggle='modal' data-target='#myModal'>Delete</a></td>
 			</tr>";
 		}
