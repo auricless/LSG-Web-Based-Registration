@@ -84,7 +84,6 @@
 				$facebook = $row['facebook'];
 			 echo
 			"<tr>
-				<td> {$ID} </td>
 				<td> {$time} </td>
 				<td> {$name} </td>
 				<td> {$gender} </td>

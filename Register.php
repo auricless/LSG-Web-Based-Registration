@@ -112,7 +112,6 @@ while($row = mysqli_fetch_assoc($result)){
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th>ID</th>
 						<th>Time</th>
 						<th>Name</th>
 						<th>Gender</th>
@@ -121,6 +120,7 @@ while($row = mysqli_fetch_assoc($result)){
 						<th>Contact #</th>
 						<th>Invited by</th>
 						<th>Facebook</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
