@@ -6,12 +6,14 @@ class Page
 	var $pageType;
 	var $stylesheets;
 	var $javascripts;
+	var $navlinks;
 	
 	function Page($pageTitle)
 	{
 		$this->pageTitle = $pageTitle;
 		$this->stylesheets = array();
 		$this->javascripts = array();
+		$this->navlinks = array();
 	}
 	
 	function addJavascript($script)
@@ -23,13 +25,50 @@ class Page
 	{
 		array_push($this->stylesheets, $stylesheet);
 	}
+
+	function addNavlink($navlink)
+	{
+		array_push($this->navlinks, $navlink);
+	}
 	
 	function renderHeader()
 	{
 		$header = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />";
-		$header .= "<title>".$this->pageTitle."</title>";
-		for($i = 0, $count = count($this->stylesheets); $i < $count; $i++)
-			$header .= "<link href=\"".$this->stylesheets[$i]."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\"/>";
+		$header .= "<title>" . $this->pageTitle . "</title>";
+		
+		$count = count($this->stylesheets);
+
+		for($i = 0; $i < $count; $i++)
+		{
+			$header .= "<link href=\"" . $this->stylesheets[$i] . "\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\"/>";
+		}
+
+		return $header;
+	}
+
+	function renderNavigation(){
+		$nav = "<nav class=\"navbar navbar-default\">
+					<div class=\"container\">
+						<div class=\"navbar-header\">
+							<a href=\"#\" class=\"navbar-brand\">Life Succes Group</a>
+						</div>
+						<ul class=\"nav navbar-nav navbar-right\">";
+
+		$count = count($this->navlinks);
+		for($i = 0; $i < $count; $i++){
+			$nav .= "<li>
+						<a href=\"" . $this->navlinks[i][link] . "\">
+							<span>
+								<i class=\"" . $this->navlinks[i][linkicon] . "\" aria-hidden=\"true\"></i>
+							</span>" . $this->navlinks[i][linktitle] . "
+						</a></li>"
+		}						
+
+		$nav .=			"</ul>
+					</div>	
+				</nav>";
+
+		return $nav;
 	}
 	
 	function renderFooter()
@@ -57,7 +96,8 @@ class Page
 				<p><a href="#">^ To Top</a></p>
 			</div>';
 
-		for($i = 0, $count = count($this->javascripts); $i < $count; $i++)
+		$count = count($this->javascripts);
+		for($i = 0; $i < $count; $i++)
 			$footer .= "<script src=\"".$this->javascripts[$i]."\" type=\"text/javascript\"></script>";
 
 		return $footer;
@@ -75,7 +115,7 @@ class Page
 		    background-color: rgba(0, 0, 0, 0.5);
 		    text-align: center;\">
 	    	
-	    	<img src=\"vendor/resources/ajax-loader.gif\" style=\"
+	    	<img src=\"assets/resources/ajax-loader.gif\" style=\"
 	    		width: 150px;
 	    		height: auto;
 	    		position: relative;
